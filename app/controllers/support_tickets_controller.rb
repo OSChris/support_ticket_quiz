@@ -1,9 +1,9 @@
 class SupportTicketsController < ApplicationController
   
-  before_action :get_ticket, only: [:show, :edit, :update, :destroy, :mark_resolved, :mark_unresolved]
+  before_action :get_ticket, only: [:edit, :update, :destroy, :mark_resolved, :mark_unresolved]
 
   def index
-    @support_tickets = SupportTicket.search(params[:search])
+    @support_tickets = SupportTicket.paginate(:page => params[:page]).search(params[:search])
   end
 
   def new

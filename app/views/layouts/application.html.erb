@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SupportTicketQuiz</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container-fluid">
+      <nav>
+        <%= link_to "Ticket List", support_tickets_path %>
+      </nav>
+    </div>
+  </header>
+
+<div class="container">
+  <% if flash[:notice] %>
+    <div class = "alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class = "alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  
+  <%= yield %>
+</div>
+
+</body>
+</html>
